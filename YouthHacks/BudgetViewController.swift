@@ -23,11 +23,6 @@ class BudgetViewController: UIViewController {
     @IBOutlet weak var chart: Chart!
     @IBOutlet weak var chartView: UIView!
     
-    @IBAction func rewardBtn(_ sender: Any) {
-    }
-    @IBAction func receiptBtn(_ sender: Any) {
-    }
-    
     var curSpend : Float = 400.25
     var maxSpend : Float = 1000
     
@@ -108,6 +103,16 @@ class BudgetViewController: UIViewController {
     }
 }
 
+class collectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var merchantName: UILabel!
+    @IBOutlet weak var pointsLabel: UILabel!
+    @IBOutlet weak var pointsNameLabel: UILabel!
+    @IBAction func merchantBtn(_ sender: Any) {
+        print("clicked")
+    }
+    
+}
+
 extension BudgetViewController:  UICollectionViewDataSource {
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -115,17 +120,34 @@ extension BudgetViewController:  UICollectionViewDataSource {
     }
   
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 3
     }
   
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! collectionViewCell
         
         cell.layer.cornerRadius = 10
         cell.clipsToBounds = true
         
-        cell.addGradientBackground(firstColor: UIColor(red: 21/255, green: 87/255, blue: 191/255, alpha: 1.0), secondColor: UIColor(red: 75/255, green: 135/255, blue: 229/255, alpha: 1.0), lr: true, width: Double(cell.frame.width), height: Double(cell.frame.height))
+        if indexPath.row == 0 {
+            cell.addGradientBackground(firstColor: UIColor(red: 21/255, green: 87/255, blue: 191/255, alpha: 1.0), secondColor: UIColor(red: 75/255, green: 135/255, blue: 229/255, alpha: 1.0), lr: true, width: Double(cell.frame.width), height: Double(cell.frame.height))
+            cell.merchantName.text = "Fairprice"
+            cell.pointsLabel.text = "3,141"
+            cell.pointsNameLabel.text = "LinkPoints"
+        }
+        else if indexPath.row == 1{
+            cell.addGradientBackground(firstColor: UIColor(red: 39/255, green: 145/255, blue: 122/255, alpha: 1.0), secondColor: UIColor(red: 42/255, green: 156/255, blue: 99/255, alpha: 1.0), lr: true, width: Double(cell.frame.width), height: Double(cell.frame.height))
+            cell.merchantName.text = "Giant"
+            cell.pointsLabel.text = "2,459"
+            cell.pointsNameLabel.text = "Points"
+        }
+        else {
+            cell.addGradientBackground(firstColor: UIColor(red: 255/255, green: 95/255, blue: 0/255, alpha: 1.0), secondColor: UIColor(red: 254/255, green: 229/255, blue: 106/255, alpha: 1.0), lr: true, width: Double(cell.frame.width), height: Double(cell.frame.height))
+            cell.merchantName.text = "Lazada"
+            cell.pointsLabel.text = "42"
+            cell.pointsNameLabel.text = "Hearts"
+        }
         
         return cell
     }

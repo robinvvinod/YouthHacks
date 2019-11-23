@@ -10,6 +10,7 @@ import UIKit
 
 class BudgetViewController: UIViewController {
     
+    @IBOutlet weak var todaySpendLabel: UILabel!
     @IBOutlet weak var tableViewContainer: UIView!
     @IBOutlet weak var collectionViewContainer: UIView!
     @IBOutlet weak var monthlySpendView: UIView!
@@ -20,7 +21,8 @@ class BudgetViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     @IBAction func rewardBtn(_ sender: Any) {
-        print("clicked")
+    }
+    @IBAction func receiptBtn(_ sender: Any) {
     }
     
     var curSpend : Float = 400.25

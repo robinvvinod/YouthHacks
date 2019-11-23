@@ -143,6 +143,25 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6hT-Aw-Vua">
+                                <rect key="frame" x="20" y="650" width="374" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Spending Graph" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="crn-KW-xjH">
+                                        <rect key="frame" x="15" y="15" width="130" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" id="FEP-jQ-Kwq" customClass="Chart" customModule="SwiftChart">
+                                        <rect key="frame" x="15" y="47" width="344" height="153"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
                             <view contentMode="scaleToFill" id="Juj-YM-mr2">
                                 <rect key="frame" x="20" y="264" width="374" height="183"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -198,6 +217,8 @@
                     </view>
                     <connections>
                         <outlet property="budgetProgressBar" destination="95e-T1-yal" id="V2y-vr-IUa"/>
+                        <outlet property="chart" destination="FEP-jQ-Kwq" id="FNt-UM-5kw"/>
+                        <outlet property="chartView" destination="6hT-Aw-Vua" id="cdk-8s-dCG"/>
                         <outlet property="collectionView" destination="S4u-o6-qtq" id="yH6-xf-dSe"/>
                         <outlet property="collectionViewContainer" destination="eUl-Jg-8Yh" id="APM-bz-282"/>
                         <outlet property="curSpendLabel" destination="2Dh-QZ-xx9" id="45b-js-oF3"/>
@@ -216,6 +237,34 @@
                 </button>
             </objects>
             <point key="canvasLocation" x="-57.971014492753625" y="96.428571428571431"/>
+        </scene>
+        <!--Test View Controller-->
+        <scene sceneID="yPI-Xv-kzs">
+            <objects>
+                <viewController id="mBd-Sd-gEx" customClass="NFCTestViewController" customModule="YouthHacks" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="22A-1P-xsk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rL9-Vk-VL7">
+                                <rect key="frame" x="175.5" y="433" width="63" height="30"/>
+                                <state key="normal" title="Test NFC"/>
+                                <connections>
+                                    <action selector="buttonTapped:" destination="mBd-Sd-gEx" eventType="touchUpInside" id="Q7g-Ko-4Zg"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="rL9-Vk-VL7" firstAttribute="centerX" secondItem="22A-1P-xsk" secondAttribute="centerX" id="E0Q-My-oqS"/>
+                            <constraint firstItem="rL9-Vk-VL7" firstAttribute="centerY" secondItem="22A-1P-xsk" secondAttribute="centerY" id="LGz-wn-Qns"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="47v-Nz-NND"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tw6-9i-GSZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="725" y="96"/>
         </scene>
     </scenes>
     <resources>

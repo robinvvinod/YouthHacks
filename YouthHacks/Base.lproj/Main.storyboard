@@ -147,8 +147,8 @@
                                 <rect key="frame" x="20" y="264" width="374" height="163"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Today's Spending" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="the-f1-x32">
-                                        <rect key="frame" x="15" y="15" width="140" height="24"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Today's Spending: $42.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="the-f1-x32">
+                                        <rect key="frame" x="15" y="15" width="204" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -173,6 +173,9 @@
                                                             <state key="normal" title="Receipt">
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="receiptBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Tpd-JS-NQT"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                 </tableViewCellContentView>
@@ -195,6 +198,7 @@
                         <outlet property="monthlySpendView" destination="zjw-r5-jjE" id="BYj-Dl-qS3"/>
                         <outlet property="tableView" destination="baf-C9-qCc" id="HO9-h1-LjS"/>
                         <outlet property="tableViewContainer" destination="Juj-YM-mr2" id="DP9-zR-xNC"/>
+                        <outlet property="todaySpendLabel" destination="the-f1-x32" id="jgs-7k-IHL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

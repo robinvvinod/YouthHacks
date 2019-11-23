@@ -62,22 +62,46 @@ class BudgetViewController: UIViewController {
         chartView.dropShadow(radius: 10)
         
         let data = [
-          (x: 0, y: 0),
-          (x: 3, y: 2.5),
-          (x: 4, y: 2),
-          (x: 5, y: 2.3),
-          (x: 7, y: 3),
-          (x: 8, y: 2.2),
-          (x: 9, y: 2.5)
+            (x: 15, y: 20.0),
+            (x: 16, y: 21.0),
+            (x: 17, y: 27.0),
+            (x: 18, y: 32.0),
+            (x: 19, y: 23.0),
+            (x: 20, y: 15.0),
+            (x: 21, y: 23.0),
+            (x: 22, y: 19.0),
+            (x: 23, y: 24.0),
+            (x: 24, y: 22.0),
+            (x: 25, y: 26.0)
         ]
+        
         let series = ChartSeries(data: data)
         series.area = true
 
         // Use `xLabels` to add more labels, even if empty
-        chart.xLabels = [0, 3, 6, 9, 12, 15, 18, 21, 24]
+        var xLabels = [Double]()
+        for i in 15...25 {
+            xLabels.append(Double(i))
+        }
+        
+        var yLabels = [Double]()
+        for i in 0...32  where i%10 == 0 {
+            yLabels.append(Double(i))
+        }
+        
+        chart.yLabels = yLabels
+        chart.xLabels = xLabels
+        chart.minY = 0
+        
+        series.colors = (
+          above: ChartColors.orangeColor(),
+          below: ChartColors.greenColor(),
+          zeroLevel: 25
+        )
 
         // Format the labels with a unit
-        chart.xLabelsFormatter = { String(Int(round($1))) + "h" }
+        chart.xLabelsFormatter = {String(Int(round($1)))}
+        chart.yLabelsFormatter = {"$" + String(Int(round($1)))}
 
         chart.add(series)
         

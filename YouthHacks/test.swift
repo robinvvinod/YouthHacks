@@ -16,4 +16,6 @@ let item4 = Receipt.LineItem(itemGrp: "Discount", itemDesc: "PB Exam Pad A4 (1x5
 let itemList = [item1, item2, item3, item4]
 let r = Receipt(tNo: 1, tDate: Date(), tMerchant: merchant, tItems: itemList, tLoyalty: 0, tMsg: "Sign up as a member to enjoy 10% off at Popular and UrbanWrite. T&C apply.")
 
-let p = JSONEncoder.encode(r)
+let encoder = JSONEncoder()
+
+let data = try! encoder.encode(r)

@@ -41,6 +41,7 @@
 		1CC705D42389399300D5567D /* Receipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receipt.swift; sourceTree = "<group>"; };
 		1CC705D6238939B800D5567D /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		1CFC2927238940D900646822 /* YouthHacks.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YouthHacks.entitlements; sourceTree = "<group>"; };
+		1CFC2928238942D600646822 /* test.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = test.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		2EBDB9FC2388F14200A58394 /* BudgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetViewController.swift; sourceTree = "<group>"; };
 		2EBDBA022388FAF700A58394 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		2EE6BDEA2388EFCB0046B5C8 /* YouthHacks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YouthHacks.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,6 +116,7 @@
 				2EE6BDF32388EFCB0046B5C8 /* Main.storyboard */,
 				1CC705D42389399300D5567D /* Receipt.swift */,
 				2EE6BDF62388EFCC0046B5C8 /* Assets.xcassets */,
+				1CFC2928238942D600646822 /* test.playground */,
 				2EE6BDF82388EFCC0046B5C8 /* LaunchScreen.storyboard */,
 				2EE6BDFB2388EFCC0046B5C8 /* Info.plist */,
 			);

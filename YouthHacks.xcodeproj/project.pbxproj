@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1CC705D02389381B00D5567D /* Receipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC705CF2389381B00D5567D /* Receipt.swift */; };
+		1CC705D52389399300D5567D /* Receipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC705D42389399300D5567D /* Receipt.swift */; };
+		1CC705D7238939B800D5567D /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC705D6238939B800D5567D /* test.swift */; };
 		2EBDB9FD2388F14200A58394 /* BudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBDB9FC2388F14200A58394 /* BudgetViewController.swift */; };
 		2EBDBA032388FAF700A58394 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBDBA022388FAF700A58394 /* Extensions.swift */; };
 		2EE6BDEE2388EFCB0046B5C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE6BDED2388EFCB0046B5C8 /* AppDelegate.swift */; };
@@ -37,7 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1CC705CF2389381B00D5567D /* Receipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receipt.swift; sourceTree = "<group>"; };
+		1CC705D42389399300D5567D /* Receipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receipt.swift; sourceTree = "<group>"; };
+		1CC705D6238939B800D5567D /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		2EBDB9FC2388F14200A58394 /* BudgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetViewController.swift; sourceTree = "<group>"; };
 		2EBDBA022388FAF700A58394 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		2EE6BDEA2388EFCB0046B5C8 /* YouthHacks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YouthHacks.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,9 +108,10 @@
 				2EE6BDED2388EFCB0046B5C8 /* AppDelegate.swift */,
 				2EE6BDEF2388EFCB0046B5C8 /* SceneDelegate.swift */,
 				2EBDB9FC2388F14200A58394 /* BudgetViewController.swift */,
+				1CC705D6238939B800D5567D /* test.swift */,
 				2EBDBA022388FAF700A58394 /* Extensions.swift */,
 				2EE6BDF32388EFCB0046B5C8 /* Main.storyboard */,
-				1CC705CF2389381B00D5567D /* Receipt.swift */,
+				1CC705D42389399300D5567D /* Receipt.swift */,
 				2EE6BDF62388EFCC0046B5C8 /* Assets.xcassets */,
 				2EE6BDF82388EFCC0046B5C8 /* LaunchScreen.storyboard */,
 				2EE6BDFB2388EFCC0046B5C8 /* Info.plist */,
@@ -265,7 +268,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1CC705D02389381B00D5567D /* Receipt.swift in Sources */,
+				1CC705D52389399300D5567D /* Receipt.swift in Sources */,
+				1CC705D7238939B800D5567D /* test.swift in Sources */,
 				2EE6BDEE2388EFCB0046B5C8 /* AppDelegate.swift in Sources */,
 				2EBDB9FD2388F14200A58394 /* BudgetViewController.swift in Sources */,
 				2EE6BDF02388EFCB0046B5C8 /* SceneDelegate.swift in Sources */,

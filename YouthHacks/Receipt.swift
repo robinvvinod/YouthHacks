@@ -33,12 +33,14 @@ class Receipt: NSObject, Codable {
     
     struct LineItem: Codable {
         
+        var itemGroup: String
         var itemDescription: String
         var itemValue: Double
         var itemQuantity: Int
         
-        init(itemDesc: String, itemVal: Double, itemQty: Int) {
+        init(itemGrp: String, itemDesc: String, itemVal: Double, itemQty: Int) {
             
+            itemGroup = itemGrp
             itemDescription = itemDesc
             itemValue = itemVal
             itemQuantity = itemQty

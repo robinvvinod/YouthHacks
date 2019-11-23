@@ -10,35 +10,14 @@ import Foundation
 
 class Receipt: NSObject, Codable {
     
-    struct Merchant: Codable {
-        
-        var merchantName: String
-        var merchantAddr: String
-        var merchantPhoneNo: Int
-        var merchantAltContacts: [String]?
-        var merchantRegulatory: [String]?
-        
-        init(mName: String, mAddr: String, mPhoneNo: Int, mAltContacts: [String]?,
-            mRegulatory: [String]?) {
-            
-            merchantName = mName
-            merchantAddr = mAddr
-            merchantPhoneNo = mPhoneNo
-            merchantAltContacts = mAltContacts
-            merchantRegulatory = mRegulatory
-            
-        }
-        
-    }
-    
     struct LineItem: Codable {
         
-        var itemGroup: String
+        var itemGroup: UInt8
         var itemDescription: String
-        var itemValue: Double
-        var itemQuantity: Int
+        var itemValue: Float
+        var itemQuantity: UInt16
         
-        init(itemGrp: String, itemDesc: String, itemVal: Double, itemQty: Int) {
+        init(itemGrp: UInt8, itemDesc: String, itemVal: Float, itemQty: UInt16) {
             
             itemGroup = itemGrp
             itemDescription = itemDesc
@@ -49,22 +28,33 @@ class Receipt: NSObject, Codable {
         
     }
     
-    var transactionNo: Int
+    var transactionMerchantID: UInt16
+    var transactionNo: UInt32
     var transactionDate: Date
-    var transactionMerchant: Merchant
     var transactionItems: [LineItem]
-    var transactionLoyalty: Int?
-    var transactionMsg: String?
+    var transactionLoyalty: UInt16?
+    var transactionMsg: String
     
-    init(tNo: Int, tDate: Date, tMerchant: Merchant, tItems: [LineItem], tLoyalty: Int?, tMsg: String?) {
+    init(tMerchantID: UInt16, tNo: UInt32, tDate: Date, tItems: [LineItem], tLoyalty: UInt16?, tMsg: String) {
         
+        transactionMerchantID = tMerchantID
         transactionNo = tNo
         transactionDate = tDate
-        transactionMerchant = tMerchant
         transactionItems = tItems
         transactionLoyalty = tLoyalty
         transactionMsg = tMsg
         
     }
 
+}
+
+struct ItemGroup {
+    
+    let Mapping = [
+        1:"Product",
+        2:"Discount",
+        3:"Tax",
+        4:"Miscellaneous"
+    ]
+    
 }

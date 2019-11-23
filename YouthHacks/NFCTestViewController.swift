@@ -111,7 +111,6 @@ class NFCTestViewController: UIViewController, NFCNDEFReaderSessionDelegate {
         }
 
         let session = NFCNDEFReaderSession(delegate: self, queue: nil, invalidateAfterFirstRead: false)
-        session.alertMessage = "Hold your iPhone near the item to learn more about it."
         session.begin()
     }
     
@@ -119,13 +118,11 @@ class NFCTestViewController: UIViewController, NFCNDEFReaderSessionDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let merchant = Receipt.Merchant(mName: "Popular Book Company", mAddr: "Ngee Ann Polytechnic", mPhoneNo: 12345678, mAltContacts: nil, mRegulatory: ["GST REG MR-8500027-X"])
-        let item1 = Receipt.LineItem(itemGrp: "Purchase", itemDesc: "R. PEARL STRAWBERRY", itemVal: 2.15, itemQty: 2)
-        let item3 = Receipt.LineItem(itemGrp: "Purchase", itemDesc: "PB Exam Pad A4 (1x5)", itemVal: 10.9, itemQty: 1)
-        let item4 = Receipt.LineItem(itemGrp: "Discount", itemDesc: "", itemVal: 2, itemQty: 1)
-        let itemList = [item1, item2, item3, item4]
-
-        let r = Receipt(tNo: 1, tDate: Date(), tMerchant: merchant, tItems: itemList, tLoyalty: 0, tMsg: "")
+        let item1 = Receipt.LineItem(itemGrp: 1, itemDesc: "R. PEARL STRAWBERRY", itemVal: 2.15, itemQty: 2)
+        let item2 = Receipt.LineItem(itemGrp: 1, itemDesc: "PB Exam Pad A4 (1x5)", itemVal: 10.9, itemQty: 1)
+        let item3 = Receipt.LineItem(itemGrp: 2, itemDesc: "", itemVal: 2, itemQty: 1)
+        let itemList = [item1, item2, item3]
+        let r = Receipt(tMerchantID: 23422, tNo: 1, tDate: Date(), tItems: itemList, tLoyalty: 0, tMsg: "")
 
         let encoder = JSONEncoder()
 

@@ -40,7 +40,7 @@
 /* Begin PBXFileReference section */
 		1CC705D42389399300D5567D /* Receipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receipt.swift; sourceTree = "<group>"; };
 		1CC705D6238939B800D5567D /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
-		1CFC292623893ECF00646822 /* YouthHacksDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YouthHacksDebug.entitlements; sourceTree = "<group>"; };
+		1CFC2927238940D900646822 /* YouthHacks.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YouthHacks.entitlements; sourceTree = "<group>"; };
 		2EBDB9FC2388F14200A58394 /* BudgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetViewController.swift; sourceTree = "<group>"; };
 		2EBDBA022388FAF700A58394 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		2EE6BDEA2388EFCB0046B5C8 /* YouthHacks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YouthHacks.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,7 +106,7 @@
 		2EE6BDEC2388EFCB0046B5C8 /* YouthHacks */ = {
 			isa = PBXGroup;
 			children = (
-				1CFC292623893ECF00646822 /* YouthHacksDebug.entitlements */,
+				1CFC2927238940D900646822 /* YouthHacks.entitlements */,
 				2EE6BDED2388EFCB0046B5C8 /* AppDelegate.swift */,
 				2EE6BDEF2388EFCB0046B5C8 /* SceneDelegate.swift */,
 				2EBDB9FC2388F14200A58394 /* BudgetViewController.swift */,
@@ -448,16 +448,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = YouthHacks/YouthHacksDebug.entitlements;
+				CODE_SIGN_ENTITLEMENTS = YouthHacks/YouthHacks.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 28TQ69XX5Q;
+				DEVELOPMENT_TEAM = 7K6ZTDFM48;
 				INFOPLIST_FILE = YouthHacks/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = robinvvinod.YouthHacks;
+				PRODUCT_BUNDLE_IDENTIFIER = robinvvinod2019.YouthHacks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -467,14 +469,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = YouthHacks/YouthHacks.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 28TQ69XX5Q;
+				DEVELOPMENT_TEAM = 7K6ZTDFM48;
 				INFOPLIST_FILE = YouthHacks/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = robinvvinod.YouthHacks;
+				PRODUCT_BUNDLE_IDENTIFIER = robinvvinod2019.YouthHacks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

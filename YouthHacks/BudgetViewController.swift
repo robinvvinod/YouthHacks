@@ -23,6 +23,9 @@ class BudgetViewController: UIViewController {
     @IBOutlet weak var chart: Chart!
     @IBOutlet weak var chartView: UIView!
     
+    @IBAction func nfcBtn(_ sender: Any) {
+    }
+    
     var curSpend : Float = 400.25
     var maxSpend : Float = 1000
     

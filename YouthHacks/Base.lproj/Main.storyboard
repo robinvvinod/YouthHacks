@@ -50,6 +50,9 @@
                                         <state key="normal" image="dot.radiowaves.left.and.right" catalog="system">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                         </state>
+                                        <connections>
+                                            <action selector="nfcBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="k32-Mf-frO"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lR9-ba-qt8">
                                         <rect key="frame" x="22" y="61" width="25" height="24"/>

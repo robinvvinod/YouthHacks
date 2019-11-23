@@ -10,12 +10,14 @@ import UIKit
 
 class BudgetViewController: UIViewController {
     
+    @IBOutlet weak var tableViewContainer: UIView!
     @IBOutlet weak var collectionViewContainer: UIView!
     @IBOutlet weak var monthlySpendView: UIView!
     @IBOutlet weak var budgetProgressBar: UIView!
     @IBOutlet weak var curSpendLabel: UILabel!
     @IBOutlet weak var maxSpendLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var tableView: UITableView!
     
     @IBAction func rewardBtn(_ sender: Any) {
         print("clicked")
@@ -31,6 +33,12 @@ class BudgetViewController: UIViewController {
         collectionView.delegate = self
         collectionView.layer.cornerRadius = 10
         collectionView.clipsToBounds = true
+        
+        tableView.dataSource = self
+        
+        tableViewContainer.layer.cornerRadius = 10
+        tableViewContainer.clipsToBounds = true
+        tableViewContainer.dropShadow(radius: 10)
         
         collectionViewContainer.layer.cornerRadius = 10
         collectionViewContainer.clipsToBounds = true
@@ -102,5 +110,18 @@ extension BudgetViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 20
+    }
+}
+
+extension BudgetViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        
+        return cell
     }
 }

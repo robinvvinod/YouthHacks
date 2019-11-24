@@ -11,6 +11,7 @@
 		1CECE2622389EFAC003D063C /* NFCReadTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CECE2612389EFAC003D063C /* NFCReadTestViewController.swift */; };
 		2DA00BACB17665EAC47DAD4F /* Pods_YouthHacks_YouthHacksUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66E8C4A7B19429162CD8DE9D /* Pods_YouthHacks_YouthHacksUITests.framework */; };
 		2E46EAAC23897F5F00C87C76 /* NFCTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E46EAAB23897F5F00C87C76 /* NFCTestViewController.swift */; };
+		2EB96952238A0D790080BE9A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2EB96951238A0D790080BE9A /* GoogleService-Info.plist */; };
 		2EBDB9FD2388F14200A58394 /* BudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBDB9FC2388F14200A58394 /* BudgetViewController.swift */; };
 		2EBDBA032388FAF700A58394 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBDBA022388FAF700A58394 /* Extensions.swift */; };
 		2EE6BDEE2388EFCB0046B5C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE6BDED2388EFCB0046B5C8 /* AppDelegate.swift */; };
@@ -48,6 +49,7 @@
 		1CFC2927238940D900646822 /* YouthHacks.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YouthHacks.entitlements; sourceTree = "<group>"; };
 		1CFC2928238942D600646822 /* test.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = test.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		2E46EAAB23897F5F00C87C76 /* NFCTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NFCTestViewController.swift; sourceTree = "<group>"; };
+		2EB96951238A0D790080BE9A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2EBDB9FC2388F14200A58394 /* BudgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetViewController.swift; sourceTree = "<group>"; };
 		2EBDBA022388FAF700A58394 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		2EE6BDEA2388EFCB0046B5C8 /* YouthHacks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YouthHacks.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -149,6 +151,7 @@
 				1CFC2928238942D600646822 /* test.playground */,
 				2EE6BDF82388EFCC0046B5C8 /* LaunchScreen.storyboard */,
 				2EE6BDFB2388EFCC0046B5C8 /* Info.plist */,
+				2EB96951238A0D790080BE9A /* GoogleService-Info.plist */,
 			);
 			path = YouthHacks;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2EE6BDFA2388EFCC0046B5C8 /* LaunchScreen.storyboard in Resources */,
+				2EB96952238A0D790080BE9A /* GoogleService-Info.plist in Resources */,
 				2EE6BDF72388EFCC0046B5C8 /* Assets.xcassets in Resources */,
 				2EE6BDF52388EFCB0046B5C8 /* Main.storyboard in Resources */,
 			);

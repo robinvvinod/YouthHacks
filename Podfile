@@ -7,6 +7,8 @@ target 'YouthHacks' do
 
   # Pods for YouthHacks 
   pod "SwiftChart"
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
 
   target 'YouthHacksTests' do
     inherit! :search_paths

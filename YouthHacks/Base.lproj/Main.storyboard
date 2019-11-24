@@ -364,35 +364,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IrU-xJ-zbF">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IrU-xJ-zbF">
+                                <rect key="frame" x="0.0" y="44" width="414" height="798"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="receiptCell" id="XhE-rA-uEc" customClass="receiptTableViewCell" customModule="YouthHacks" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XhE-rA-uEc" id="N8I-n3-plN">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tMj-dU-ry6">
-                                                    <rect key="frame" x="20" y="4" width="258" height="36"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tMj-dU-ry6">
+                                                    <rect key="frame" x="20" y="4" width="63" height="37"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
                                                     <state key="normal" title="Receipt">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
                                                 </button>
-                                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6VT-JI-f01">
-                                                    <rect key="frame" x="321" y="4" width="73" height="36"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6VT-JI-f01">
+                                                    <rect key="frame" x="331" y="4" width="63" height="37"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
                                                     <state key="normal" title="Receipt">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
                                                 </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="6VT-JI-f01" firstAttribute="centerY" secondItem="tMj-dU-ry6" secondAttribute="centerY" id="On1-AW-6sY"/>
+                                                <constraint firstAttribute="trailing" secondItem="6VT-JI-f01" secondAttribute="trailing" constant="20" id="cXh-Ne-5AO"/>
+                                                <constraint firstItem="tMj-dU-ry6" firstAttribute="top" secondItem="N8I-n3-plN" secondAttribute="top" constant="4" id="fyW-4H-9T8"/>
+                                                <constraint firstItem="tMj-dU-ry6" firstAttribute="leading" secondItem="N8I-n3-plN" secondAttribute="leading" constant="20" id="jhJ-vT-eoC"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="nameLabel" destination="tMj-dU-ry6" id="DaE-gl-lVK"/>
@@ -403,6 +406,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="IrU-xJ-zbF" secondAttribute="bottom" id="ecL-bI-W3j"/>
+                            <constraint firstItem="IrU-xJ-zbF" firstAttribute="top" secondItem="hT0-3z-1jE" secondAttribute="top" constant="44" id="gUP-LR-GEy"/>
+                            <constraint firstItem="IrU-xJ-zbF" firstAttribute="trailing" secondItem="hT0-3z-1jE" secondAttribute="trailing" id="uaA-E1-wPo"/>
+                            <constraint firstItem="IrU-xJ-zbF" firstAttribute="leading" secondItem="hT0-3z-1jE" secondAttribute="leading" id="wec-Ro-aPK"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="hT0-3z-1jE"/>
                     </view>
                     <navigationItem key="navigationItem" id="k0o-t3-TQU"/>

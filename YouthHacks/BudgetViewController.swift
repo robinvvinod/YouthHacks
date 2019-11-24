@@ -9,6 +9,7 @@
 import UIKit
 import SwiftChart
 import CoreNFC
+import Firebase
 
 class BudgetViewController: UIViewController, NFCNDEFReaderSessionDelegate {
     
@@ -24,6 +25,8 @@ class BudgetViewController: UIViewController, NFCNDEFReaderSessionDelegate {
     @IBOutlet weak var chart: Chart!
     @IBOutlet weak var chartView: UIView!
     
+    let ref = Database.database().reference()
+        
     @IBAction func nfcBtn(_ sender: Any) {
         guard NFCNDEFReaderSession.readingAvailable else {
             let alertController = UIAlertController(
@@ -41,11 +44,48 @@ class BudgetViewController: UIViewController, NFCNDEFReaderSessionDelegate {
         session.begin()
     }
     
-    var curSpend : Float = 400.25
-    var maxSpend : Float = 1000
+    var curSpend : Float = 0
+    var maxSpend : Float = 0
+    var rewardsDict = ["Fairprice":0, "Giant":0]
+    var receipts = [Array<Any>]()
+    var merchants = [23422:"Fairprice", 23423:"Giant"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ref.child("merchantIDs").observeSingleEvent(of: .value) { snapshot in
+            let array:NSArray = snapshot.children.allObjects as NSArray
+            for child in array {
+                let snap = child as! DataSnapshot
+                let valueDict = snap.value as? NSDictionary
+                self.rewardsDict.updateValue(valueDict?["loyaltyPoints"] as! Int, forKey: valueDict?["name"] as! String)
+            }
+            self.collectionView.reloadData()
+        }
+        
+        ref.observeSingleEvent(of: .value) { snapshot in
+            let value = snapshot.value as? NSDictionary
+            self.curSpend = value?["curSpend"] as! Float
+            self.maxSpend = value?["maxSpend"] as! Float
+            self.curSpendLabel.setNeedsDisplay()
+            self.maxSpendLabel.setNeedsDisplay()
+            self.budgetProgressBar.addGradientBackground(firstColor: .green, secondColor: .systemGreen, lr: true, width: Double(self.budgetProgressBar.frame.width) * Double(self.curSpend/self.maxSpend), height: Double(self.budgetProgressBar.frame.height))
+        }
+        
+        ref.child("Receipts").observeSingleEvent(of: .value) { snapshot in
+            let array:NSArray = snapshot.children.allObjects as NSArray
+            for child in array {
+                let snap = child as! DataSnapshot
+                let subArray:NSArray = snap.children.allObjects as NSArray
+                for child in subArray {
+                    let snap = child as! DataSnapshot
+                    let valueDict = snap.value as? NSDictionary
+                    
+                    self.receipts.append([valueDict?["merchantID"] as! Int, valueDict?["TotalPrice"] as! Float, valueDict?["Time"] as! String])
+                }
+                self.tableView.reloadData()
+            }
+        }
         
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -53,7 +93,6 @@ class BudgetViewController: UIViewController, NFCNDEFReaderSessionDelegate {
         collectionView.clipsToBounds = true
         
         tableView.dataSource = self
-        
         tableViewContainer.layer.cornerRadius = 10
         tableViewContainer.clipsToBounds = true
         tableViewContainer.dropShadow(radius: 10)
@@ -68,7 +107,6 @@ class BudgetViewController: UIViewController, NFCNDEFReaderSessionDelegate {
         
         budgetProgressBar.layer.cornerRadius = 3
         budgetProgressBar.clipsToBounds = true
-        budgetProgressBar.addGradientBackground(firstColor: .green, secondColor: .systemGreen, lr: true, width: Double(budgetProgressBar.frame.width) * Double(curSpend/maxSpend), height: Double(budgetProgressBar.frame.height))
         
         chartView.layer.cornerRadius = 10
         chartView.clipsToBounds = true
@@ -117,7 +155,6 @@ class BudgetViewController: UIViewController, NFCNDEFReaderSessionDelegate {
         chart.yLabelsFormatter = {"$" + String(Int(round($1)))}
 
         chart.add(series)
-        
     }
     
     func readerSessionDidBecomeActive(_ session: NFCNDEFReaderSession) {
@@ -221,7 +258,6 @@ class collectionViewCell: UICollectionViewCell {
     @IBOutlet weak var pointsLabel: UILabel!
     @IBOutlet weak var pointsNameLabel: UILabel!
     @IBAction func merchantBtn(_ sender: Any) {
-        print("clicked")
     }
     
 }
@@ -242,20 +278,30 @@ extension BudgetViewController:  UICollectionViewDataSource {
         
         cell.layer.cornerRadius = 10
         cell.clipsToBounds = true
-        
         if indexPath.row == 0 {
+            if cell.layer.sublayers?.count ?? 0 > 1 {
+                cell.layer.sublayers?.remove(at: 0)
+            }
             cell.addGradientBackground(firstColor: UIColor(red: 21/255, green: 87/255, blue: 191/255, alpha: 1.0), secondColor: UIColor(red: 75/255, green: 135/255, blue: 229/255, alpha: 1.0), lr: true, width: Double(cell.frame.width), height: Double(cell.frame.height))
             cell.merchantName.text = "Fairprice"
-            cell.pointsLabel.text = "3,141"
+            cell.pointsLabel.text = String(rewardsDict["Fairprice"]!)
             cell.pointsNameLabel.text = "LinkPoints"
         }
-        else if indexPath.row == 1{
+            
+        if indexPath.row == 1 {
+            if cell.layer.sublayers?.count ?? 0 > 1 {
+                cell.layer.sublayers?.remove(at: 0)
+            }
             cell.addGradientBackground(firstColor: UIColor(red: 39/255, green: 145/255, blue: 122/255, alpha: 1.0), secondColor: UIColor(red: 42/255, green: 156/255, blue: 99/255, alpha: 1.0), lr: true, width: Double(cell.frame.width), height: Double(cell.frame.height))
             cell.merchantName.text = "Giant"
-            cell.pointsLabel.text = "2,459"
+            cell.pointsLabel.text = String(rewardsDict["Giant"]!)
             cell.pointsNameLabel.text = "Points"
         }
-        else {
+        
+        if indexPath.row == 2 {
+            if cell.layer.sublayers?.count ?? 0 > 1 {
+                cell.layer.sublayers?.remove(at: 0)
+            }
             cell.addGradientBackground(firstColor: UIColor(red: 255/255, green: 95/255, blue: 0/255, alpha: 1.0), secondColor: UIColor(red: 254/255, green: 229/255, blue: 106/255, alpha: 1.0), lr: true, width: Double(cell.frame.width), height: Double(cell.frame.height))
             cell.merchantName.text = "Lazada"
             cell.pointsLabel.text = "42"
@@ -300,14 +346,32 @@ extension BudgetViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+class tableViewCell: UITableViewCell {
+    @IBOutlet weak var receiptNameBtn: UIButton!
+    @IBAction func receiptBtn(_ sender: Any) {
+    }
+    @IBOutlet weak var priceBtn: UIButton!
+    
+}
+
 extension BudgetViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        print(receipts.count)
+        return receipts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath) as! tableViewCell
+        
+        //cell.preservesSuperviewLayoutMargins = false
+        cell.separatorInset = UIEdgeInsets.zero
+        cell.layoutMargins = UIEdgeInsets.zero
+        
+        let nameTime = merchants[(receipts[indexPath.row][0] as! Int)]! + " - " + String((receipts[indexPath.row][2] as! String))
+        let price = "$" + String(receipts[indexPath.row][1] as! Float)
+        cell.receiptNameBtn.setTitle(nameTime, for: .normal)
+        cell.priceBtn.setTitle(price, for: .normal)
         
         return cell
     }

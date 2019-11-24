@@ -233,7 +233,8 @@ class BudgetViewController: UIViewController, NFCNDEFReaderSessionDelegate {
                                         print(decodedReceipt)
                                     }
                                     
-                                self.ref.child("Receipts").child("2").setValuesForKeys(["Items" : ["R. PEARL STRAWBERRY": 2.15, "PB Exam Pad A4 (1x5)": 10.9],"Time" : "1.10pm","TotalPrice" : 13.05,"loyaltyPoints" : 24,"merchantID" : 23422])
+                                    self.ref.child("Receipts").child("2").child("Time").setValue("1.10pm")
+                                //self.ref.child("Receipts").child("2").setValuesForKeys(["Items" : ["R. PEARL STRAWBERRY": 2.15, "PB Exam Pad A4 (1x5)": 10.9],"TotalPrice" : Double(13.05),"loyaltyPoints" : 24,"merchantID" : 23422])
                                     
                                     self.tableView.reloadData()
                                 }

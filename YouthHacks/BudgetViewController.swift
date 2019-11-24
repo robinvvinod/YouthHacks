@@ -28,6 +28,7 @@ class BudgetViewController: UIViewController, NFCNDEFReaderSessionDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var chart: Chart!
     @IBOutlet weak var chartView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     let ref = Database.database().reference()
         
@@ -59,6 +60,10 @@ class BudgetViewController: UIViewController, NFCNDEFReaderSessionDelegate {
             vc.date = datePush
             vc.id = idPush
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height+20)
     }
     
     override func viewDidLoad() {

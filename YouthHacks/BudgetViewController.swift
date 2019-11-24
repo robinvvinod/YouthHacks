@@ -247,7 +247,8 @@ class BudgetViewController: UIViewController, NFCNDEFReaderSessionDelegate {
                                     receipts = [Array<Any>]()
                                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                                     let vc = storyboard.instantiateViewController(withIdentifier: "BudgetViewController") as! BudgetViewController
-                                    self.present(vc, animated: true, completion: nil)
+                                    vc.modalPresentationStyle = .fullScreen
+                                    self.present(vc, animated: false, completion: nil)
                                     //self.navigationController?.pushViewController(vc, animated: true)
                                     
                                 }

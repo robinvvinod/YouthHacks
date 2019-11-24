@@ -44,8 +44,8 @@ class BudgetViewController: UIViewController, NFCNDEFReaderSessionDelegate {
         session.begin()
     }
     
-    var curSpend : Float = 400.25
-    var maxSpend : Float = 1000
+    var curSpend : Float = 0
+    var maxSpend : Float = 0
     var rewardsDict = ["Fairprice":0, "Giant":0]
     var receipts = [Array<Any>]()
     var merchants = [23422:"Fairprice", 23423:"Giant"]
@@ -61,6 +61,15 @@ class BudgetViewController: UIViewController, NFCNDEFReaderSessionDelegate {
                 self.rewardsDict.updateValue(valueDict?["loyaltyPoints"] as! Int, forKey: valueDict?["name"] as! String)
             }
             self.collectionView.reloadData()
+        }
+        
+        ref.observeSingleEvent(of: .value) { snapshot in
+            let value = snapshot.value as? NSDictionary
+            self.curSpend = value?["curSpend"] as! Float
+            self.maxSpend = value?["maxSpend"] as! Float
+            self.curSpendLabel.setNeedsDisplay()
+            self.maxSpendLabel.setNeedsDisplay()
+            self.budgetProgressBar.addGradientBackground(firstColor: .green, secondColor: .systemGreen, lr: true, width: Double(self.budgetProgressBar.frame.width) * Double(self.curSpend/self.maxSpend), height: Double(self.budgetProgressBar.frame.height))
         }
         
         ref.child("Receipts").observeSingleEvent(of: .value) { snapshot in
@@ -98,7 +107,6 @@ class BudgetViewController: UIViewController, NFCNDEFReaderSessionDelegate {
         
         budgetProgressBar.layer.cornerRadius = 3
         budgetProgressBar.clipsToBounds = true
-        budgetProgressBar.addGradientBackground(firstColor: .green, secondColor: .systemGreen, lr: true, width: Double(budgetProgressBar.frame.width) * Double(curSpend/maxSpend), height: Double(budgetProgressBar.frame.height))
         
         chartView.layer.cornerRadius = 10
         chartView.clipsToBounds = true

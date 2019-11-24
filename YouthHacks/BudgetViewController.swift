@@ -152,7 +152,7 @@ class BudgetViewController: UIViewController, NFCNDEFReaderSessionDelegate {
         }
         
         var yLabels = [Double]()
-        for i in 0...32  where i%10 == 0 {
+        for i in 0...32  where i%15 == 0 {
             yLabels.append(Double(i))
         }
         
@@ -248,6 +248,7 @@ class BudgetViewController: UIViewController, NFCNDEFReaderSessionDelegate {
                                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                                     let vc = storyboard.instantiateViewController(withIdentifier: "BudgetViewController") as! BudgetViewController
                                     self.present(vc, animated: true, completion: nil)
+                                    //self.navigationController?.pushViewController(vc, animated: true)
                                     
                                 }
                             }

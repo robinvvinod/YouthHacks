@@ -234,7 +234,17 @@ class BudgetViewController: UIViewController, NFCNDEFReaderSessionDelegate {
                                     }
                                     
                                     self.ref.child("Receipts").child("2").child("Time").setValue("1.10pm")
-                                //self.ref.child("Receipts").child("2").setValuesForKeys(["Items" : ["R. PEARL STRAWBERRY": 2.15, "PB Exam Pad A4 (1x5)": 10.9],"TotalPrice" : Double(13.05),"loyaltyPoints" : 24,"merchantID" : 23422])
+                                    
+                                    self.ref.child("Receipts").child("2").child("TotalPrice").setValue(13.05)
+                                    
+                                    self.ref.child("Receipts").child("2").child("loyaltyPoints").setValue(24)
+                                    
+                                    self.ref.child("Receipts").child("2").child("merchantID").setValue(23422)
+                                    
+                                    self.ref.child("Receipts").child("2").child("Items").child("R. PEARL STRAWBERRY").setValue(2.15)
+                                    
+                                    self.ref.child("Receipts").child("2").child("Items").child("PB Exam Pad A4 (1x5)").setValue(13.05)
+
                                     
                                     self.tableView.reloadData()
                                 }

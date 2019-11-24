@@ -232,21 +232,23 @@ class BudgetViewController: UIViewController, NFCNDEFReaderSessionDelegate {
                                     if let decodedReceipt = try? decoder.decode(Receipt.self, from: receiptData) {
                                         print(decodedReceipt)
                                     }
+                                    self.ref.child("/Receipts/24-11-2019/").child("2").child("Time").setValue("1.10pm")
                                     
-                                    self.ref.child("Receipts").child("2").child("Time").setValue("1.10pm")
+                                    self.ref.child("/Receipts/24-11-2019/").child("2").child("TotalPrice").setValue(13.05)
                                     
-                                    self.ref.child("Receipts").child("2").child("TotalPrice").setValue(13.05)
+                                    self.ref.child("/Receipts/24-11-2019/").child("2").child("loyaltyPoints").setValue(24)
                                     
-                                    self.ref.child("Receipts").child("2").child("loyaltyPoints").setValue(24)
+                                    self.ref.child("/Receipts/24-11-2019/").child("2").child("merchantID").setValue(23422)
                                     
-                                    self.ref.child("Receipts").child("2").child("merchantID").setValue(23422)
+                                    self.ref.child("/Receipts/24-11-2019/").child("2").child("Items").child("R PEARL STRAWBERRY").setValue(2.15)
                                     
-                                    self.ref.child("Receipts").child("2").child("Items").child("R. PEARL STRAWBERRY").setValue(2.15)
+                                    self.ref.child("/Receipts/24-11-2019/").child("2").child("Items").child("PB Exam Pad A4 (1x5)").setValue(13.05)
                                     
-                                    self.ref.child("Receipts").child("2").child("Items").child("PB Exam Pad A4 (1x5)").setValue(13.05)
-
+                                    receipts = [Array<Any>]()
+                                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                                    let vc = storyboard.instantiateViewController(withIdentifier: "BudgetViewController") as! BudgetViewController
+                                    self.present(vc, animated: true, completion: nil)
                                     
-                                    self.tableView.reloadData()
                                 }
                             }
                         }

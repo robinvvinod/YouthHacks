@@ -7,41 +7,54 @@
 //
 
 import UIKit
+import Firebase
 
-class ReceiptViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ReceiptViewController: UIViewController {
     
-    var ReceiptList: [Receipt] = []
-    let reuseIdentifier = ""
+    @IBOutlet weak var tableView: UITableView!
     
+    let ref = Database.database().reference()
+    var date = "24-11-2019"
+    var id = "1"
+    
+    var itemNames = [String]()
+    var itemPrices = [NSNumber]()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    ref.child("Receipts").child(date).child(id).child("Items").observeSingleEvent(of: .value) { snapshot in
+                for case let rest as DataSnapshot in snapshot.children {
+                    self.itemNames.append(rest.key)
+                    self.itemPrices.append(rest.value as! NSNumber)
+                }
+                self.tableView.reloadData()
+            }
+        
+        self.tableView.dataSource = self
+        
+    }
+        
+}
+    
+class receiptTableViewCell: UITableViewCell {
+    @IBOutlet weak var nameLabel: UIButton!
+    @IBOutlet weak var priceLabel: UIButton!
+}
+
+extension ReceiptViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ReceiptList.count
+        itemNames.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
         
+        let cell = tableView.dequeueReusableCell(withIdentifier: "receiptCell", for: indexPath) as! receiptTableViewCell
+        
+        cell.nameLabel.setTitle(itemNames[indexPath.row], for: .normal)
+        cell.priceLabel.setTitle("$" + itemPrices[indexPath.row].stringValue, for: .normal)
         return cell
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-}
-
-class ReceiptViewCell: UITableViewCell {
     
 }

@@ -11,6 +11,10 @@ import SwiftChart
 import CoreNFC
 import Firebase
 
+var datePush = ""
+var idPush = ""
+var receipts = [Array<Any>]()
+
 class BudgetViewController: UIViewController, NFCNDEFReaderSessionDelegate {
     
     @IBOutlet weak var todaySpendLabel: UILabel!
@@ -47,8 +51,15 @@ class BudgetViewController: UIViewController, NFCNDEFReaderSessionDelegate {
     var curSpend : Float = 0
     var maxSpend : Float = 0
     var rewardsDict = ["Fairprice":0, "Giant":0]
-    var receipts = [Array<Any>]()
     var merchants = [23422:"Fairprice", 23423:"Giant"]
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "pushData") {
+            let vc = segue.destination as! ReceiptViewController
+            vc.date = datePush
+            vc.id = idPush
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,7 +92,9 @@ class BudgetViewController: UIViewController, NFCNDEFReaderSessionDelegate {
                     let snap = child as! DataSnapshot
                     let valueDict = snap.value as? NSDictionary
                     
-                    self.receipts.append([valueDict?["merchantID"] as! Int, valueDict?["TotalPrice"] as! Float, valueDict?["Time"] as! String])
+                    let components = NSURL(fileURLWithPath: snap.ref.url).pathComponents!.dropFirst()
+                    
+                    receipts.append([valueDict?["merchantID"] as! Int, Float((valueDict?["TotalPrice"] as! NSNumber).stringValue)!, valueDict?["Time"] as! String, components[4], components[5]])
                 }
                 self.tableView.reloadData()
             }
@@ -92,6 +105,7 @@ class BudgetViewController: UIViewController, NFCNDEFReaderSessionDelegate {
         collectionView.layer.cornerRadius = 10
         collectionView.clipsToBounds = true
         
+        tableView.delegate = self
         tableView.dataSource = self
         tableViewContainer.layer.cornerRadius = 10
         tableViewContainer.clipsToBounds = true
@@ -216,6 +230,10 @@ class BudgetViewController: UIViewController, NFCNDEFReaderSessionDelegate {
                                     if let decodedReceipt = try? decoder.decode(Receipt.self, from: receiptData) {
                                         print(decodedReceipt)
                                     }
+                                    
+                                self.ref.child("Receipts").child("2").setValuesForKeys(["Items" : ["R. PEARL STRAWBERRY": 2.15, "PB Exam Pad A4 (1x5)": 10.9],"Time" : "1.10pm","TotalPrice" : 13.05,"loyaltyPoints" : 24,"merchantID" : 23422])
+                                    
+                                    self.tableView.reloadData()
                                 }
                             }
                         }
@@ -348,16 +366,22 @@ extension BudgetViewController: UICollectionViewDelegateFlowLayout {
 
 class tableViewCell: UITableViewCell {
     @IBOutlet weak var receiptNameBtn: UIButton!
-    @IBAction func receiptBtn(_ sender: Any) {
-    }
     @IBOutlet weak var priceBtn: UIButton!
     
+}
+
+extension BudgetViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selected = receipts[indexPath.row]
+        datePush = selected[3] as! String
+        idPush = selected[4] as! String
+        performSegue(withIdentifier: "pushData", sender: (Any).self)
+    }
 }
 
 extension BudgetViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(receipts.count)
         return receipts.count
     }
     

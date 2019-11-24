@@ -78,6 +78,8 @@ class BudgetViewController: UIViewController, NFCNDEFReaderSessionDelegate {
             let value = snapshot.value as? NSDictionary
             self.curSpend = value?["curSpend"] as! Float
             self.maxSpend = value?["maxSpend"] as! Float
+            self.curSpendLabel.text = "$" + String(self.curSpend)
+            self.maxSpendLabel.text = "$" + String(self.maxSpend)
             self.curSpendLabel.setNeedsDisplay()
             self.maxSpendLabel.setNeedsDisplay()
             self.budgetProgressBar.addGradientBackground(firstColor: .green, secondColor: .systemGreen, lr: true, width: Double(self.budgetProgressBar.frame.width) * Double(self.curSpend/self.maxSpend), height: Double(self.budgetProgressBar.frame.height))
